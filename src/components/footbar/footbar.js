@@ -18,7 +18,6 @@ const footbar = (props) => {
 					<MDBRow>
 						<MDBCol>
 							<MDBNavItem>
-
 							</MDBNavItem>
 						</MDBCol>
 						<MDBCol>

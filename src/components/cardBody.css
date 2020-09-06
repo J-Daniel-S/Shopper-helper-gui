@@ -1,0 +1,26 @@
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+.cardBody {
+	background-color: #ffffe6;
+}
+
+.items {
+	background-color: #e6ee9c;
+	box-shadow: 0 3px 2px 0 inset #fafafa ;
+	margin: 0.25vh 0;
+	padding: 0.25vh;
+	cursor: pointer;
+}
+
+.selected {
+	background-color: #e6ee9c;
+	font-size: 1.1rem;
+	font-weight: bolder;
+	box-shadow: 0 3px 2px 0 inset #fafafa ;
+	margin: 0.25vh 0;
+	padding: 0.30vh;
+	cursor: pointer;
+}
