@@ -1,18 +1,24 @@
 import React from 'react';
-import { MDBContainer, MDBNavbar, MDBNavbarNav, MDBNavbarBrand, MDBNavItem } from 'mdbreact';
-import { ButtonGroup, Form, Button } from 'react-bootstrap';
+import { MDBContainer, MDBNavbar, MDBNavbarNav, MDBNavbarBrand, MDBNavItem, MDBInput } from 'mdbreact';
+import { Form, Button } from 'react-bootstrap';
 
-const header = (props) => {
+class Header extends React.Component {
+
+	render() {
 
 	const submitted = (event) => {
-		console.log('submitted');
 		event.preventDefault();
 		event.stopPropagation();
-		props.submitted();
-	}
 
-	//I must needs use a normal form methinks... I'll have to include bootstrap in index.html... or I could just put in a button group... I think I'll do that
-	//Remember to make the item name required
+		const item = {
+			name: document.getElementById("itemAdd").value,
+			price: document.getElementById("itemPrice").value,
+			quantity: document.getElementById("itemQuantity").value,
+			inCart: false
+		}
+
+		this.props.submitted(item);
+	}
 
 	return (
 		<MDBContainer>
@@ -22,27 +28,24 @@ const header = (props) => {
 				</MDBNavbarBrand>
 				<MDBNavbarNav right>
 					<MDBNavItem>
-						<Form inline onSubmit={submitted}>
+						<Form ref={ form => this.itemForm = form } inline onSubmit={submitted} >
 							<div className="md-form my-o">
-								<input className="form-control mr-sm-2" type="text" placeholder="add item" />
+								<MDBInput className="form-control mr-sm-2" type="text" label="add item" id="itemAdd" required />
 							</div>
 							<div className="md-form my-o">
-								<input className="form-control mr-sm-2" type="text" placeholder="price" />
+								<MDBInput className="form-control mr-sm-2" type="text" label="price" id="itemPrice" />
 							</div>
 							<div className="md-form my-o">
-								<input className="form-control mr-sm-2" type="number" placeholder="quantity" />
+								<MDBInput className="form-control mr-sm-2" type="number" label="quantity" id="itemQuantity" />
 							</div>
-							<Form.Text>add to...</Form.Text>
-							<ButtonGroup >
-								<Button variant="dark-green" size="sm" type="submit">List</Button>
-								<Button variant="dark-green" size="sm" type="submit">Cart</Button>
-							</ButtonGroup>
+							<Button variant="outline-dark-green" size="sm" type="submit">Add item</Button>
 						</Form>
 					</MDBNavItem>
 				</MDBNavbarNav>
 			</MDBNavbar>
 		</MDBContainer>
 	);
+	}
 }
 
-export default header;
+export default Header;

@@ -21,43 +21,16 @@ const shopperHelper = (props) => {
 	}, []);
 
 	const getItems = () => {
-		const headers = {
-			'Access-Control-Allow-Origin': 'localhost:3000',
-			'Access-Control-Allow-Methods': 'GET',
-		}
 
-		axios.get('http://localhost:8080/shopper-helper').then(res => console.log(res.data))
+		axios.get('http://localhost:8080/shopper-helper').then(res => {
+			setItemsState(res.data);
+			// console.log(itemsState);
+		});
+	};
 
-		setItemsState([
-			{
-				itemId: 1,
-				name: "carrots",
-				price: 0,
-				quantity: 0,
-				inCart: false
-			},
-			{
-				itemId: 2,
-				name: "farts",
-				price: 0,
-				quantity: 0,
-				inCart: false
-			},
-			{
-				itemId: 3,
-				name: "chicken",
-				price: 0,
-				quantity: 0,
-				inCart: false
-			},
-			{
-				itemId: 4,
-				name: "nickels",
-				price: 0,
-				quantity: 0,
-				inCart: false
-			}]
-		);
+	const addItem = (item) => {
+		
+		console.log(item);
 	};
 
 	const bodyStyle = {
@@ -75,7 +48,7 @@ const shopperHelper = (props) => {
 	return (
 		<main style={bodyStyle}>
 			<ItemContext.Provider value={[...itemArr]}>
-				<Header submitted={getItems} />
+				<Header submitted={addItem} />
 				<MDBContainer className="mt-5 text-center">
 					<List />
 					<Cart />
