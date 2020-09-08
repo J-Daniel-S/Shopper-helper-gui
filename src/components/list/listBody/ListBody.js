@@ -6,22 +6,27 @@ import ItemContext from '../../../context/ItemContext';
 
 const listBody = (props) => {
 	// eslint-disable-next-line
-	const [modal, setModal, item, setItem, items, setItems] = useContext(ItemContext);
+	const [ item, setItem, items, setItems ] = useContext(ItemContext);
 	const [theItems, setTheItems] = useState([]);
 
 	useEffect(() => {
-		setTheItems([...items]);
-	}, [items])
+		const listItems = [];
+		for (let item of items) {
+			if (!item.inCart) {
+				listItems.push(item);
+			}
+		}
+		listItems.sort();
+		setTheItems([...listItems]);
+	}, [items]);
 
 	const deleteItem = (i) => {
-		console.log('delete item ' + i.itemId);
+		props.deleteItem(i);
 	}
 
 	const moveItemToCart = (i) => {
-		console.log('move item ' + i.itemId);
-	}
-
-	//use index to change the size of the selected list item
+		props.moveItem(i);
+	};
 
 	return (
 		<MDBCard className="listBody">
@@ -30,10 +35,10 @@ const listBody = (props) => {
 					<li key={i.itemId} className="items">
 						<MDBRow>
 							<MDBCol>
-								<i className="fa fa-times fa-lg" aria-hidden="true" onClick={() => deleteItem(i)}></i>
+								<i className="fas fa-cart-arrow-down fa-lg" onClick={() => moveItemToCart(i)}></i>
 							</MDBCol>
 							<MDBCol>
-								{i.price !== 0 && (<span>${i.price}</span>)}
+								{i.price !== 0 && (<span>${i.price.toFixed(2)}</span>)}
 							</MDBCol>
 							<MDBCol style={{ textTransform: 'capitalize' }} >
 								{i.name !== null && i.name}
@@ -42,7 +47,7 @@ const listBody = (props) => {
 								{i.quantity !== 0 && (<span>#: {i.quantity}</span>)}
 							</MDBCol>
 							<MDBCol>
-								<i className="fas fa-cart-arrow-down fa-lg" onClick={() => moveItemToCart(i)}></i>
+								<i className="fa fa-times fa-lg" aria-hidden="true" onClick={() => deleteItem(i)}></i>
 							</MDBCol>
 						</MDBRow>
 					</li>

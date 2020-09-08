@@ -12,8 +12,8 @@ class Header extends React.Component {
 
 		const item = {
 			name: document.getElementById("itemAdd").value,
-			price: document.getElementById("itemPrice").value,
-			quantity: document.getElementById("itemQuantity").value,
+			price: document.getElementById("itemPrice").value === "" ? 0: document.getElementById("itemPrice").value,
+			quantity: document.getElementById("itemQuantity").value === "" ? 0: document.getElementById("itemQuantity").value,
 			inCart: false
 		}
 
@@ -28,15 +28,15 @@ class Header extends React.Component {
 				</MDBNavbarBrand>
 				<MDBNavbarNav right>
 					<MDBNavItem>
-						<Form ref={ form => this.itemForm = form } inline onSubmit={submitted} >
+						<Form id="itemForm" inline onSubmit={submitted} >
 							<div className="md-form my-o">
 								<MDBInput className="form-control mr-sm-2" type="text" label="add item" id="itemAdd" required />
 							</div>
 							<div className="md-form my-o">
-								<MDBInput className="form-control mr-sm-2" type="text" label="price" id="itemPrice" />
+								<MDBInput className="form-control mr-sm-2" type="text" label="price (optional)" id="itemPrice" />
 							</div>
 							<div className="md-form my-o">
-								<MDBInput className="form-control mr-sm-2" type="number" label="quantity" id="itemQuantity" />
+								<MDBInput className="form-control mr-sm-2" type="number" label="quantity (optional)" id="itemQuantity" />
 							</div>
 							<Button variant="outline-dark-green" size="sm" type="submit">Add item</Button>
 						</Form>

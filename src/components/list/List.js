@@ -14,10 +14,10 @@ const list = (props) => {
 					<ListHeader />
 				</Accordion.Toggle>
 				<Accordion.Collapse eventKey="0">
-					<ListBody />
+					<ListBody moveItem={props.moveItem} moveItems={props.moveItems} deleteItem={props.deleteItem} deleteItems={props.deleteItems} />
 				</Accordion.Collapse>
 			</Accordion>
-			<ListFooter />
+			<ListFooter moveItems={props.moveItems} deleteItems={props.deleteItems}/>
 		</MDBContainer >
 	);
 }

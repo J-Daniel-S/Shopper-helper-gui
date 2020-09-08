@@ -10,28 +10,99 @@ import ItemContext from '../context/ItemContext';
 
 
 const shopperHelper = (props) => {
-	const [modalState, setModalState] = useState(false);
 	const [itemState, setItemState] = useState({});
 	const [itemsState, setItemsState] = useState([]);
 
-	const itemArr = [modalState, setModalState, itemState, setItemState, itemsState, setItemsState];
+	const itemArr = [ itemState, setItemState, itemsState, setItemsState ];
 
 	useEffect(() => {
 		getItems();
+		
 	}, []);
 
 	const getItems = () => {
 
 		axios.get('http://localhost:8080/shopper-helper').then(res => {
 			setItemsState(res.data);
-			// console.log(itemsState);
 		});
 	};
 
 	const addItem = (item) => {
-		
-		console.log(item);
+		const headers = {
+			'Access-Control-Allow-Origin': 'localhost:3000',
+			'Context-Type': 'Application/json',
+			method: 'POST'
+		}
+
+		axios.post('http://localhost:8080/shopper-helper', item, { headers })
+			.then(res => setItemsState(res.data));
 	};
+
+	const moveItem = (item) => {
+		const headers = {
+			'Access-Control-Allow-Origin': 'localhost:3000',
+			'Context-Type': 'Application/json',
+			method: 'PUT'
+		}
+
+		axios.put('http://localhost:8080/shopper-helper/' + item.itemId, {}, { headers })
+			.then(res => setItemsState(res.data));
+	}
+
+	const moveItems = () => {
+		const headers = {
+			'Access-Control-Allow-Origin': 'localhost:3000',
+			'Context-Type': 'Application/json',
+			method: 'PUT'
+		}
+
+		axios.put('http://localhost:8080/shopper-helper/list', {}, { headers })
+			.then(res => setItemsState(res.data));
+	}
+
+	const deleteItem = (item) => {
+		const headers = {
+			'Access-Control-Allow-Origin': 'localhost:3000',
+			'Context-Type': 'Application/json',
+			method: 'DELETE'
+		}
+
+		axios.delete('http://localhost:8080/shopper-helper/' + item.itemId, {}, { headers })
+			.then(res => setItemsState(res.data));
+	}
+
+	const deleteItems = () => {
+		const headers = {
+			'Access-Control-Allow-Origin': 'localhost:3000',
+			'Context-Type': 'Application/json',
+			method: 'DELETE'
+		}
+
+		axios.delete('http://localhost:8080/shopper-helper', {}, { headers })
+			.then(res => setItemsState(res.data));
+	}
+
+	const deleteListItems = () => {
+		const headers = {
+			'Access-Control-Allow-Origin': 'localhost:3000',
+			'Context-Type': 'Application/json',
+			method: 'DELETE'
+		}
+
+		axios.delete('http://localhost:8080/shopper-helper/list', {}, { headers })
+			.then(res => setItemsState(res.data));
+	}
+
+	const deleteCartItems = () => {
+		const headers = {
+			'Access-Control-Allow-Origin': 'localhost:3000',
+			'Context-Type': 'Application/json',
+			method: 'DELETE'
+		}
+
+		axios.delete('http://localhost:8080/shopper-helper/cart', {}, { headers })
+			.then(res => setItemsState(res.data));
+	}
 
 	const bodyStyle = {
 		backgroundColor: '#ffffe6',
@@ -40,21 +111,16 @@ const shopperHelper = (props) => {
 		color: 'white'
 	}
 
-	// eslint-disable-next-line
-	const clicked = () => {
-		console.log("item clicked")
-	}
-
 	return (
 		<main style={bodyStyle}>
 			<ItemContext.Provider value={[...itemArr]}>
 				<Header submitted={addItem} />
 				<MDBContainer className="mt-5 text-center">
-					<List />
-					<Cart />
+					<List moveItem={moveItem} moveItems={moveItems} deleteItem={deleteItem} deleteItems={deleteListItems} />
+					<Cart deleteItem={deleteItem} deleteItems={deleteCartItems} />
 				</MDBContainer>
 				<br></br>
-				<Footbar />
+				<Footbar deleteItems={deleteItems} />
 			</ItemContext.Provider>
 		</main>
 	);

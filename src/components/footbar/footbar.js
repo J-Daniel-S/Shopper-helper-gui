@@ -1,18 +1,14 @@
 import React from 'react';
-import { MDBContainer, MDBNavbar, MDBNavItem, MDBNavbarNav, MDBNavbarBrand, MDBRow, MDBCol, MDBIcon } from 'mdbreact';
+import { MDBContainer, MDBNavbar, MDBNavItem, MDBNavbarNav, MDBNavbarBrand, MDBRow, MDBCol } from 'mdbreact';
 
 const footbar = (props) => {
+	const cursor = { cursor: 'pointer' };
 
 	return (
 		<MDBContainer>
 			<MDBNavbar color="lime lighten-3" dark expand="sm">
 				<MDBNavbarNav left>
-					<MDBNavbarBrand>
-						<div>
-							<MDBIcon icon="money-check-alt" />
-							<span><strong> $Total</strong></span>
-						</div>
-					</MDBNavbarBrand>
+
 				</MDBNavbarNav>
 				<MDBNavbarNav right>
 					<MDBRow>
@@ -22,8 +18,8 @@ const footbar = (props) => {
 						</MDBCol>
 						<MDBCol>
 							<MDBNavItem>
-								<MDBNavbarBrand>
-									<strong className="white-text"> Buy All</strong>
+								<MDBNavbarBrand style={cursor} onClick={props.deleteItems}>
+									<strong className="white-text"> Buy/Clear All</strong>
 								</MDBNavbarBrand>
 							</MDBNavItem>
 						</MDBCol>

@@ -4,11 +4,11 @@ import { MDBNavbar, MDBNavbarNav, MDBNavItem } from 'mdbreact';
 const listFooter = (props) => {
 
 	const clearAll = () => {
-		console.log('clear all');
+		props.deleteItems();
 	}
-	
+
 	const moveAll = () => {
-		console.log('move all');
+		props.moveItems();
 	}
 
 	const cursor = { cursor: 'pointer' }
@@ -18,14 +18,14 @@ const listFooter = (props) => {
 			<MDBNavbarNav left>
 				<MDBNavItem>
 					<strong style={cursor}>
-						Clear <i className="fas fa-clipboard-list" onClick={() => clearAll()}></i>
+						Move all to <i className="fas fa-cart-arrow-down fa-lg" onClick={() => moveAll()}></i>
 					</strong>
 				</MDBNavItem>
 			</MDBNavbarNav>
 			<MDBNavbarNav right>
 				<MDBNavItem>
 					<strong style={cursor}>
-						Move all to <i className="fas fa-cart-arrow-down fa-lg" onClick={() => moveAll()}></i>
+						Clear <i className="fas fa-clipboard-list" onClick={() => clearAll()}></i>
 					</strong>
 				</MDBNavItem>
 			</MDBNavbarNav>

@@ -15,11 +15,11 @@ const cart = (props) => {
 					<CartHeader />
 				</Accordion.Toggle>
 				<Accordion.Collapse eventKey="0">
-					<CartBody />
+					<CartBody deleteItem={props.deleteItem} deleteItems={props.deleteItems} />
 				</Accordion.Collapse>
 			</Accordion>
-			<CartFooter />
-		</MDBContainer >
+			<CartFooter deleteItems={props.deleteItems} />
+		</MDBContainer>
 	);
 }
 
