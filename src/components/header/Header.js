@@ -17,6 +17,10 @@ class Header extends React.Component {
 			inCart: false
 		}
 
+		document.getElementById("itemAdd").value = "";
+		document.getElementById("itemPrice").value = "";
+		document.getElementById("itemQuantity").value = "";
+
 		this.props.submitted(item);
 	}
 
