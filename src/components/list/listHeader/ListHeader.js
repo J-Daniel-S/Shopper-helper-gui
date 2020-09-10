@@ -6,7 +6,7 @@ import '../../cardHeader.css';
 const listHeader = (props) => {
 
 	return (
-		<MDBNavbar color="light-green darken-1" expand="lg">
+		<MDBNavbar color="red darken-4" expand="lg">
 			<MDBRow>
 				<MDBCol>
 					<span className="headerTitle"> <i className="fas fa-clipboard-list"></i>List</span>

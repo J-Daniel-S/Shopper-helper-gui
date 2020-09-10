@@ -105,7 +105,7 @@ const shopperHelper = (props) => {
 	}
 
 	const bodyStyle = {
-		backgroundColor: '#ffffe6',
+		backgroundColor: '#9e9e9e',
 		height: '100vh',
 		fontFamily: "'Josefin Sans', sans-serif",
 		color: 'white'
