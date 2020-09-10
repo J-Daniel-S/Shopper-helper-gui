@@ -35,7 +35,9 @@ const shopperHelper = (props) => {
 		}
 
 		axios.post('http://localhost:8080/shopper-helper', item, { headers })
-			.then(res => setItemsState(res.data));
+			.then(res => {
+				setItemsState(res.data);
+			});
 	};
 
 	const moveItem = (item) => {
