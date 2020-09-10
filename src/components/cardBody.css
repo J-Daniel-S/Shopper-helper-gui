@@ -4,12 +4,11 @@ ul {
 }
 
 .cardBody {
-	background-color: #ffffe6;
+	background-color: #ffebee;
 }
 
 .items {
-	background-color: #e6ee9c;
-	box-shadow: 0 3px 2px 0 inset #fafafa ;
+	background-color: #00acc1;
 	margin: 0.25vh 0;
 	padding: 0.25vh;
 	cursor: pointer;

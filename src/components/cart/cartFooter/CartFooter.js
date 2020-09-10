@@ -29,7 +29,7 @@ const cartFooter = (props) => {
 	const cursor = { cursor: 'pointer' }
 
 	return (
-		<MDBNavbar color="light-green darken-1" expand="lg">
+		<MDBNavbar color="red darken-4" expand="lg">
 			<MDBNavbarNav left>
 				<MDBNavItem onClick={() => clearCart()}>
 					<strong className="white-text" style={cursor}> Buy/Clear <i className="fa fa-shopping-cart" aria-hidden="true"></i></strong>

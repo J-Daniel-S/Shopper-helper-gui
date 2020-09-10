@@ -14,7 +14,7 @@ const listFooter = (props) => {
 	const cursor = { cursor: 'pointer' }
 
 	return (
-		<MDBNavbar color="light-green darken-1" expand="lg">
+		<MDBNavbar color="red darken-4" expand="lg">
 			<MDBNavbarNav left>
 				<MDBNavItem>
 					<strong style={cursor}>

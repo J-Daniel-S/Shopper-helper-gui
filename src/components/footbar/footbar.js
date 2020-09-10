@@ -6,7 +6,7 @@ const footbar = (props) => {
 
 	return (
 		<MDBContainer>
-			<MDBNavbar color="lime lighten-3" dark expand="sm">
+			<MDBNavbar color="cyan darken-1" dark expand="sm">
 				<MDBNavbarNav left>
 
 				</MDBNavbarNav>
