@@ -31,9 +31,9 @@ const header = (props) => {
 		event.stopPropagation();
 
 		const item = {
-			name: document.getElementById("itemAdd").value,
-			price: document.getElementById("itemPrice").value === "" ? 0 : document.getElementById("itemPrice").value,
-			quantity: document.getElementById("itemQuantity").value === "" ? 0 : document.getElementById("itemQuantity").value,
+			name: nameState,
+			price: priceState === "" ? 0 : priceState,
+			quantity: quantityState === "" ? 0 : quantityState,
 			inCart: false
 		}
 
